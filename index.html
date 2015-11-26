@@ -41,31 +41,10 @@
       </div>
     </div>
 -->
-    <div class='item-container'>
-      <div class='item-container-header'>Weather</div>
-      <div class='item-container-content'>
-        <label class='item'>
-          Celsius, eh?
-          <input id='use_celsius_checkbox' type='checkbox' class='item-toggle'>
-        </label>
-      </div>
-      <div class='item-container-footer'>
-        If checked, Holidays will use celsius instead of fahrenheit.
-      </div>
-      <div class='item-container-content'>
-        <label class='item'>
-          Custom Location
-          <input id='custom_location_checkbox' type='text' class='item-input' placeholder='Enter a location...'>
-        </label>
-      </div>
-      <div class='item-container-footer'>
-        If this field is NOT blank, Holidays will attempt to use the inputted location for grabbing weather. Otherwise, GPS will be used.
-      </div>
-    </div>
 
     <div class='item-container'>
       <div class='button-container'>
-        <input id='submit_button' type='button' class='item-button' value='SUBMIT'>
+        <input id='submit_button' type='button' class='item-button' value='CLOSE'>
       </div>
     </div>
   </body>
@@ -104,21 +83,11 @@
     console.log('Submit');
 
     // Set the return URL depending on the runtime environment
-    var return_to = getQueryParam('return_to', 'pebblejs://close#');
-    document.location = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
+    document.location = 'pebblejs://close';
   });
 
   (function() {
-    var useCelsiusCheckbox = document.getElementById('use_celsius_checkbox');
-    var locationBox = document.getElementById('custom_location_checkbox');
 
-    // Load any previously saved configuration, if available
-    if(localStorage['use_celsius']) {
-      useCelsiusCheckbox.checked = JSON.parse(localStorage['use_celsius']);
-      var customLocation = localStorage['custom_location'];
-      console.log("custom location: " + customLocation);
-      locationBox.value = customLocation;
-    }
   })();
   </script>
 </html>
